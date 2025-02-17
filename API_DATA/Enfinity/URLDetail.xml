@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<URL>
+		<APP_URL>PAYSTORE.COM</APP_URL>
+		<WEB_URL>WEBSTORE.COM</WEB_URL>	
+	</URL>
+	
+	<DEF_CUR_CD>
+		<ABABIL_CUR_CD>BDT</ABABIL_CUR_CD>
+		<FINACLE_CUR_CD>BDT</FINACLE_CUR_CD>
+		<CARD_CUR_CD>BDT</CARD_CUR_CD>	
+	</DEF_CUR_CD>
+	
+	
+	
+	<CUST_360>
+		<AUTHORIZATION>
+			<OAUTH_URL>http://192.168.96.101:8085/citybank/intgr/external/api/getBearerToken</OAUTH_URL>
+			<USER_NAME>dob</USER_NAME>
+			<PASSWORD>Prod@5731</PASSWORD>
+			<METHOD_TYPE>POST</METHOD_TYPE>
+		</AUTHORIZATION>
+		<API_URL>http://192.168.96.101:8085/citybank/intgr/external/api/allAccountsAndCards</API_URL>
+		<METHOD_TYPE>POST</METHOD_TYPE>
+	</CUST_360>
+
+
+</root>

@@ -1,0 +1,41 @@
+{
+  "software_version": "25.01.00.00.13",
+  "date": "30-JAN-2025",
+  "Microservice_Name": "[Enfinity-CommonApplication]",
+  "version_information": {
+    "major_release_aa": "25",
+    "minor_release_bb": "01",
+    "patch_release_cc": "00",
+    "patch_release_dd": "00",
+    "internal_release_ee" : "13"
+  },
+  "changes": {
+    "feature_addition": "Description of new features added in this version.",
+    "bug_fixes": "List of bugs fixed in this version.",
+    "improvements": "Description of improvements or optimizations made.",
+    "other_changes": "Any other relevant changes or updates.",
+    "internal_build_update" : "For Internal and development purpose"
+  },
+  "version_information_detailed": {
+    "major_release_aa": {
+      "version": "25",
+      "description": "Major release, Year of release"
+    },
+    "minor_release_bb": {
+      "version": "01",
+      "description": "Minor release, Quarterly release"
+    },
+    "patch_release_cc": {
+      "version": "00",
+      "description": "Patch release, Internal major update"
+    },
+    "patch_release_dd": {
+      "version": "00",
+      "description": "Patch release, Internal minor update"
+    },
+    "internal_release_ee": {
+      "version": "13",
+      "description": "For Internal and development purpose"
+    }
+  }
+}
