@@ -7,7 +7,7 @@ pipeline {
         maven 'maven3'
     }
     environment {
-        GIT_REPO_URL     = 'https://github.com/adminacute/Enfinity-CommonApplication.git'
+        GIT_REPO_URL     = 'https://github.com/krishnaachauhan/CommonApplication.git'
         GIT_CREDENTIALS  = 'krishnaachauhan'
         BRANCH           = 'main'
         EMAIL_RECIPIENT  = 'krishna.chauhan@bankaiinformatics.co.in,pooja.bharambe@bankaiinformatics.co.in'
