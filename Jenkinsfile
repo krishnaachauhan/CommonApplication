@@ -42,10 +42,10 @@ pipeline {
                     withSonarQubeEnv('Sonarqube-token') {
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=Java-Project-1 \
-                            -Dsonar.qualityProfile=Acute-Java-Quality-Profiles \
+                            -Dsonar.projectKey=java-profile-projets \
+                            -Dsonar.qualityProfile=java-quality-1 \
                             -Dsonar.host.url=http://10.14.1.49:9000 \
-                            -Dsonar.token=sqp_b526783c031d5a8e3f258a81a6749136f6420418 \
+                            -Dsonar.token=sqp_9a9bc0bf72a1cdb12400e0a3d5e0b79d295b0de2
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.language=java \
                             -Dsonar.java.binaries=target/classes \
