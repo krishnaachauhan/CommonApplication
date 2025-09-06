@@ -65,7 +65,7 @@ pipeline {
             
                     withSonarQubeEnv('sonarqube-token1') {
                         sh """
-                            ${scannerHome}/bin/sonar-scanner \
+                            ${scannerHome}/bin/sonarqube-token1 \
                             -Dsonar.projectKey=java-profile-projets \
                             -Dsonar.qualityProfile=java-quality-1 \
                             -Dsonar.host.url=http://10.14.1.49:9000 \
