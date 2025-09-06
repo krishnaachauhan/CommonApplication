@@ -84,6 +84,14 @@ pipeline {
                 }
             }
         }
+        stage('Export SonarQube Issues') {
+            steps {
+                sh '''
+                  curl -u admin:admin "http://10.14.1.49:9000/api/issues/search?componentKeys=java-profile-projets" -o issues.json
+                '''
+                archiveArtifacts artifacts: 'issues.json', allowEmptyArchive: true
+            }
+        }
  
         stage('Run Maven Install-File') {
             steps {
