@@ -37,7 +37,7 @@ pipeline {
         // stage('SonarQube Analysis') {
         //     steps {
         //         script {
-        //             def scannerHome = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        //             def scannerHome = tool name: 'sonarqube-token1', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
  
         //             withSonarQubeEnv('sonarqube-token1') {
         //                 sh """
@@ -65,7 +65,7 @@ pipeline {
             
                     withSonarQubeEnv('sonarqube-token1') {
                         sh """
-                            ${scannerHome}/bin/sonarqube-token1 \
+                            ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=java-profile-projets \
                             -Dsonar.qualityProfile=java-quality-1 \
                             -Dsonar.host.url=http://10.14.1.49:9000 \
