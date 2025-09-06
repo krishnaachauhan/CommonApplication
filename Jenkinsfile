@@ -58,12 +58,12 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    def scannerHome = tool name: 'sonarqube-token', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    def scannerHome = tool name: 'sonarqube-token1', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
             
                     // First generate test coverage reports
                     sh 'mvn test jacoco:report'  // Generates JaCoCo report at target/site/jacoco/jacoco.xml
             
-                    withSonarQubeEnv('sonarqube-token') {
+                    withSonarQubeEnv('sonarqube-token1') {
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=java-profile-projets \
