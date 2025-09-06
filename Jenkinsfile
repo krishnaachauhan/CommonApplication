@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Updated token tool name
-                    def scannerHome = tool name: 'sonarqube-token1', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    def scannerHome = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     
                     // Generate JaCoCo test coverage reports
                     sh 'mvn test jacoco:report'
