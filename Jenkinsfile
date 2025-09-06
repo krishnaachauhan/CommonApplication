@@ -84,6 +84,16 @@ pipeline {
                 }
             }
         }
+        stage('Export SonarQube Issues') {
+            steps {
+                sh """
+                    curl -u sqp_9a9bc0bf72a1cdb12400e0a3d5e0b79d295b0de2: \
+                    "http://10.14.1.49:9000/api/issues/search?componentKeys=java-profile-projets" \
+                    -o issue.json
+                """
+                archiveArtifacts artifacts: 'issue.json', fingerprint: true
+            }
+        }
  
         stage('Run Maven Install-File') {
             steps {
