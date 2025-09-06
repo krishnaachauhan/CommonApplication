@@ -3,7 +3,7 @@ pipeline {
         label 'jenkins-agent1'
     }
     tools {
-        jdk 'jdk17'
+        jdk 'Jdk17'
         maven 'maven3'
     }
     environment {
@@ -12,14 +12,14 @@ pipeline {
         BRANCH           = 'main'
         EMAIL_RECIPIENT  = 'krishna.chauhan@bankaiinformatics.co.in,pooja.bharambe@bankaiinformatics.co.in'
     }
-
+ 
     stages {
         stage('Cleanup Workspace') {
             steps {
                 cleanWs()
             }
         }
-
+ 
         stage('Checkout') {
             steps {
                 git branch: "${env.BRANCH}",
@@ -27,23 +27,43 @@ pipeline {
                     url: "${env.GIT_REPO_URL}"
             }
         }
-
+ 
         stage('Build Application') {
             steps {
                 sh 'mvn clean install -DskipTests'
             }
         }
-
+ 
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //             def scannerHome = tool name: 'sonarqube-token', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+ 
+        //             withSonarQubeEnv('sonarqube-token') {
+        //                 sh """
+        //                     ${scannerHome}/bin/sonar-scanner \
+        //                     -Dsonar.projectKey=java-profile-projets \
+        //                     -Dsonar.qualityProfile=java-quality-1 \
+        //                     -Dsonar.host.url=http://10.14.1.49:9000 \
+        //                     -Dsonar.token=sqp_9a9bc0bf72a1cdb12400e0a3d5e0b79d295b0de2 \
+        //                     -Dsonar.sourceEncoding=UTF-8 \
+        //                     -Dsonar.language=java \
+        //                     -Dsonar.java.binaries=target/classes \
+        //                     -Dsonar.java.libraries=target/*.jar
+        //                 """
+        //             }
+        //         }
+        //     } sonarqube-token
+        // }
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    // Updated token tool name
-                    def scannerHome = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                    
-                    // Generate JaCoCo test coverage reports
-                    sh 'mvn test jacoco:report'
-
-                    withSonarQubeEnv('sonarqube-token1') {
+                    def scannerHome = tool name: 'sonarqube-token', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+            
+                    // First generate test coverage reports
+                    sh 'mvn test jacoco:report'  // Generates JaCoCo report at target/site/jacoco/jacoco.xml
+            
+                    withSonarQubeEnv('sonarqube-token') {
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=java-profile-projets \
@@ -64,18 +84,7 @@ pipeline {
                 }
             }
         }
-
-        stage('Export SonarQube Issues') {
-            steps {
-                sh """
-                    curl -u sqp_9a9bc0bf72a1cdb12400e0a3d5e0b79d295b0de2: \
-                    "http://10.14.1.49:9000/api/issues/search?componentKeys=java-profile-projets" \
-                    -o issue.json
-                """
-                archiveArtifacts artifacts: 'issue.json', fingerprint: true
-            }
-        }
-
+ 
         stage('Run Maven Install-File') {
             steps {
                 sh '''
@@ -89,7 +98,7 @@ pipeline {
             }
         }
     }
-
+ 
     post {
         success {
             mail to: "${env.EMAIL_RECIPIENT}",
@@ -103,3 +112,6 @@ pipeline {
         }
     }
 }
+
+
+sqa_c24e0ba176993e6ea6e507abd62e9e95c10084ec  6-09-2025 testing purpose 
