@@ -43,7 +43,7 @@ pipeline {
                     // Generate JaCoCo test coverage reports
                     sh 'mvn test jacoco:report'
 
-                    withSonarQubeEnv('sonar-scanner') {
+                    withSonarQubeEnv('sonarqube-token1') {
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=java-profile-projets \
