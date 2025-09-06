@@ -53,7 +53,7 @@ pipeline {
         //                 """
         //             }
         //         }
-        //     } sonarqube-token
+        //     }
         // }
         stage('SonarQube Analysis') {
             steps {
