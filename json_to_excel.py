@@ -44,6 +44,6 @@ df = pd.DataFrame([{
 
 df.to_excel(OUTPUT_XLSX, index=False)
 
-print(f"✅ Excel file generated: {OUTPUT_XLSX}")
+print(f" Excel file generated: {OUTPUT_XLSX}")
 
  
