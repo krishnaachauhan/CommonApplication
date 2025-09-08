@@ -34,27 +34,6 @@ pipeline {
             }
         }
  
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         script {
-        //             def scannerHome = tool name: 'sonarqube-token1', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
- 
-        //             withSonarQubeEnv('sonarqube-token1') {
-        //                 sh """
-        //                     ${scannerHome}/bin/sonar-scanner \
-        //                     -Dsonar.projectKey=java-profile-projets \
-        //                     -Dsonar.qualityProfile=java-quality-1 \
-        //                     -Dsonar.host.url=http://10.14.1.49:9000 \
-        //                     -Dsonar.token=sqa_c24e0ba176993e6ea6e507abd62e9e95c10084ec \
-        //                     -Dsonar.sourceEncoding=UTF-8 \
-        //                     -Dsonar.language=java \
-        //                     -Dsonar.java.binaries=target/classes \
-        //                     -Dsonar.java.libraries=target/*.jar
-        //                 """
-        //             }
-        //         }
-        //     }
-        // }
         stage('SonarQube Analysis') {
             steps {
                 script {
