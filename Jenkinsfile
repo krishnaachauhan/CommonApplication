@@ -93,19 +93,23 @@ pipeline {
     }
  
     post {
-        success {
-            mail to: "${env.EMAIL_RECIPIENT}",
-                subject: "Jenkins Build SUCCESS - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Good news! The build was successful.\n\nJob: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER}\nURL: ${env.BUILD_URL}"
-                attachmentsPattern: "issues_report.xlsx" 
-        }
-        failure {
-            mail to: "${env.EMAIL_RECIPIENT}",
-                subject: "Jenkins Build FAILURE - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Unfortunately, the build failed.\n\nJob: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER}\nURL: ${env.BUILD_URL}"
-                attachmentsPattern: "issues_report.xlsx" 
-        }
-    }
-}
+         success {
+             emailext(
+                 to: "${env.EMAIL_RECIPIENT}",
+                 subject: "Jenkins Build SUCCESS - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Good news! The build was successful.\n\nJob: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER}\nURL: ${env.BUILD_URL}",
+                 attachmentsPattern: "issues_report.xlsx"
+             )
+         }
+         failure {
+             emailext(
+                 to: "${env.EMAIL_RECIPIENT}",
+                 subject: "Jenkins Build FAILURE - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Unfortunately, the build failed.\n\nJob: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER}\nURL: ${env.BUILD_URL}",
+                 attachmentsPattern: "issues_report.xlsx"
+             )
+         }
+     }
+ }
 
 
