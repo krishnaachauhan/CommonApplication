@@ -71,6 +71,12 @@ pipeline {
                 archiveArtifacts artifacts: 'issues.json', allowEmptyArchive: true
             }
         }
+        stage('Convert JSON to Excel') {
+            steps {
+                sh 'python3 json_to_excel.py'
+                archiveArtifacts artifacts: 'issues_report.xlsx', allowEmptyArchive: true
+            }
+        }
  
         stage('Run Maven Install-File') {
             steps {
