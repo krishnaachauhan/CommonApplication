@@ -6,7 +6,7 @@ import pandas as pd
  
 # Input/output paths
 
-INPUT_JSON =  "report.json" #"issues.json"
+INPUT_JSON =  "issues.json" #"issues.json"
 
 OUTPUT_XLSX = "issues_report.xlsx"
  
